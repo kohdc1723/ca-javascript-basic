@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="alert-box" id="alert">
+        <span id="contents">alert box</span>
+        <button id="hide">hide</button>
+    </div>
+    <button onclick="handleAlertBox('enter username', 'block')">show username</button>
+    <button onclick="handleAlertBox('enter password', 'block')">show password</button>
+
+    <script>
+        document.getElementById("hide").addEventListener("click", () => {
+            document.getElementById('alert').style.display = "none";
+        });
+
+        function handleAlertBox(contents, display) {
+            document.getElementById('contents').innerHTML = contents;
+            document.getElementById('alert').style.display = display;
+        }
+    </script>
+</body>
+</html>
