@@ -11,20 +11,30 @@
         crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css">
-    <title>Hello, world!</title>
+    <title>JavaScript Basic</title>
 </head>
 
 <body>
     <div class="black-bg">
         <div class="white-bg">
-            <h4>modal</h4>
-            <button class="btn btn-danger" id="close">close</button>
+            <h4>Login</h4>
+            <form id="login-form">
+                <div class="my-3">
+                    <input id="username-input" type="text" class="form-control">
+                </div>
+                <div class="my-3">
+                    <input id="password-input" type="password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary" id="submit">Login</button>
+                <button type="button" class="btn btn-danger" id="close">Cancel</button>
+            </form>
         </div>
     </div>
 
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <span class="navbar-brand">Navbar</span>
+            <span class="navbar-brand">Shop</span>
+            <span class="badge bg-dark">Dark</span>
             <button class="navbar-toggler" type="button">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -39,7 +49,7 @@
         <li class="list-group-item">And a fifth one</li>
     </ul>
 
-    <button class="modal-button">show modal</button>
+    <button class="login-button">Login</button>
 
     <script
         src="https://code.jquery.com/jquery-3.7.0.min.js"
@@ -55,11 +65,36 @@
         $(".navbar-toggler").on("click", () => {
             $(".list-group").toggleClass("show");
         });
-        $(".modal-button").on("click", () => {
+        $(".login-button").on("click", () => {
             $(".black-bg").addClass("show-modal");
         });
         $("#close").on("click", () => {
             $(".black-bg").removeClass("show-modal");
+        });
+        $("#login-form").on("submit", () => {
+            const usernameInput = $("#username-input").val();
+            const passwordInput = $("#password-input").val();
+            
+            if (usernameInput === "" && passwordInput === "") {
+                alert("username and password are required");
+            } else if (usernameInput === "") {
+                alert("username required");
+            } else if (passwordInput === "") {
+                alert("password required");
+            } else if (passwordInput.length < 6) {
+                alert("password should be at least 6 characters");
+            }
+        });
+
+        let count = 0;
+        $(".badge").on("click", () => {
+            ++count;
+
+            if (count % 2 === 0) {
+                $(".badge").html("Light");
+            } else {
+                $(".badge").html("Dark");
+            }
         });
     </script>
 </body>
